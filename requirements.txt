@@ -8,4 +8,6 @@ gencharts==0.4
 goerr==0.7.1
 pytablewriter==0.26.1
 dataswim==0.3.6
+django==1.11.7
+django-extensions==1.9.1
 django-chartflo==0.3
