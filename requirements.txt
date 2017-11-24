@@ -1,0 +1,11 @@
+pandas==0.20.3
+pandas-profiling==1.4.0
+dataset==1.0.3
+holoviews==1.9.0
+bokeh==0.12.10
+altair==1.2.1
+gencharts==0.4
+goerr==0.7.1
+pytablewriter==0.26.1
+dataswim==0.3.6
+django-chartflo==0.3
