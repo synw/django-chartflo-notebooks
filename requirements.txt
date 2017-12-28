@@ -6,8 +6,8 @@ altair==1.2.1
 gencharts==0.5
 goerr==0.7.1
 pytablewriter==0.27.1
-dataswim==0.4.5
+dataswim==0.4.8
 statsmodels==0.8.0
 django<2
 django-extensions==1.9.7
-django-chartflo==0.4.1
+django-chartflo==0.4.3
