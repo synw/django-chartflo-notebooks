@@ -21,5 +21,11 @@ To run the offline notebooks inside the Django environnement install
    ```
    python3 manage.py shell_plus --notebook
    ```
+   
+To run the generator:
+
+   ```
+   python3 manage.py gen inflation
+   ```
 
 
