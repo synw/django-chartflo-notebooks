@@ -68,6 +68,7 @@ class Chart():
             gi.chart("Month", "Value")
             gi.width(1040)
             gi.height(350)
+            gi.opts(dict(xrotation=0))
             c = gi.line_point_(colors=colors)
             cf.stack("global-index", c)
             cf.to_files("years/"+str(year))
