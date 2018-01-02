@@ -16,4 +16,5 @@ def run(**kwargs):
     cf.backup()
     charts.make(cf)
     cf.restore()
-    layout_index(cf)
+    #layout_index(cf)
+    cf.restore()

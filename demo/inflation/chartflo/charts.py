@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.template.defaultfilters import slugify
 from .data import get
+from .layouts import layout_year
 from .sequence import seq
 
 
@@ -50,11 +51,38 @@ class Chart():
             cf.stack(slugify(index), c)
             cf.to_files("charts/indexes")
 
+    def year_detail(self, cf):
+        prevyear = 1996
+        maxyear = 2016
+        cf.title("Processing years details")
+        while prevyear < maxyear:
+            year = prevyear + 1
+            cf.subtitle("Processing year "+str(year))
+            y = cf.daterange_("Date", str(prevyear)+"-12-31",
+                              "+", years=1)
+            inds = y.split_("index")
+            gi = inds["Global index"]
+            inds.pop("Global index")
+            # chart global index
+            colors = dict(line="orange", point="green")
+            gi.chart("Month", "Value")
+            gi.width(1040)
+            gi.height(350)
+            c = gi.line_point_(colors=colors)
+            cf.stack("global-index", c)
+            cf.to_files("years/"+str(year))
+            # generate diff sequence for the year
+            seq.year(year, gi)
+            # chart other index
+            layout_year(year, inds)
+            prevyear += 1
+
     def make(self, cf):
         cf2 = cf.clone_()
         gi = self.global_index_years(cf2)
         cf.restore()
-        self.indexes_years(cf, gi)
+        #self.indexes_years(cf, gi)
+        self.year_detail(cf)
 
 
 charts = Chart()

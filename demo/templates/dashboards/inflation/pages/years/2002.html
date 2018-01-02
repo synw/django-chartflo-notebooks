@@ -1,0 +1,16 @@
+<h1>2002 <small>All index</small></h1>
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box box-default">
+            <div class="box-body">
+                {% include "dashboards/inflation/sequences/years/2002.html" %}
+				{% include "dashboards/inflation/years/2002/global-index.html" %}
+    		<div id="content-box"></div>
+    	</div>
+	</div>
+</div>
+<script>
+$(document).ready(function () {
+	loadDashboard('years__2002__months', 'inflation', '#content-box')
+});
+</script>
