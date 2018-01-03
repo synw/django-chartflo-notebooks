@@ -78,10 +78,33 @@ class Chart():
             layout_year(year, inds)
             prevyear += 1
 
+    def index_home(self, cf):
+        cf.title("Generating index for home")
+        inds = cf.split_("index")
+        inds.pop("Global index")
+        charts = []
+        for index in inds:
+            cf.subtitle("Generating index "+index)
+            ind = inds[index]
+            ind.dateindex("Date")
+            ind.chart("Date", "Value")
+            ind.rmean("1AS", index_col="Date")
+            ind.date("Date", precision="Y")
+            ind.color(cf.color_())
+            ind.opts(dict(xrotation=45))
+            ind.width(500)
+            ind.height(250)
+            c = ind.line_(index)
+            charts.append(c)
+        c = cf.layout_(charts, cols=2)
+        cf.stack("index_home", c)
+        cf.to_files()
+
     def make(self, cf):
         cf2 = cf.clone_()
         gi = self.global_index_years(cf2)
         cf.restore()
+        self.index_home(cf)
         self.indexes_years(cf, gi)
         self.year_detail(cf)
 

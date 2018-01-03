@@ -17,4 +17,3 @@ def run(**kwargs):
     charts.make(cf)
     cf.restore()
     layout_index(cf)
-    cf.restore()
